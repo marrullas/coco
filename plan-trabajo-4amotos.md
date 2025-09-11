@@ -35,11 +35,11 @@
 - Configurar repositorio Git
 
 **Tareas:**
-- [ ] Instalar Node.js y npm
-- [ ] Descargar e instalar PocketBase
+- [X] Instalar Node.js y npm
+- [X] Descargar e instalar PocketBase
 - [ ] Crear nuevo proyecto SvelteKit: `npm create svelte@latest 4amotos-system`
 - [ ] Configurar estructura de carpetas del proyecto
-- [ ] Inicializar repositorio Git y conectar con GitHub
+- [X] Inicializar repositorio Git y conectar con GitHub
 - [ ] Documentar configuración inicial
 
 **Entregables:**
