@@ -27,19 +27,16 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/about" | "/camilo" | "/sverdle" | "/sverdle/how-to-play" | "/veterinaria";
+		RouteId(): "/" | "/cotizacion" | "/productos";
 		RouteParams(): {
 			
 		};
 		LayoutParams(): {
 			"/": Record<string, never>;
-			"/about": Record<string, never>;
-			"/camilo": Record<string, never>;
-			"/sverdle": Record<string, never>;
-			"/sverdle/how-to-play": Record<string, never>;
-			"/veterinaria": Record<string, never>
+			"/cotizacion": Record<string, never>;
+			"/productos": Record<string, never>
 		};
-		Pathname(): "/" | "/about" | "/about/" | "/camilo" | "/camilo/" | "/sverdle" | "/sverdle/" | "/sverdle/how-to-play" | "/sverdle/how-to-play/" | "/veterinaria" | "/veterinaria/";
+		Pathname(): "/" | "/cotizacion" | "/cotizacion/" | "/productos" | "/productos/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/favicon.svg" | "/robots.txt" | string & {};
 	}

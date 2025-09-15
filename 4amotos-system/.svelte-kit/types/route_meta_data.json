@@ -2,19 +2,8 @@
 	"/": [
 		"src/routes/+page.ts"
 	],
-	"/about": [
-		"src/routes/about/+page.ts"
-	],
-	"/camilo": [
-		"src/routes/camilo/+page.ts"
-	],
-	"/sverdle": [
-		"src/routes/sverdle/+page.server.ts"
-	],
-	"/sverdle/how-to-play": [
-		"src/routes/sverdle/how-to-play/+page.ts"
-	],
-	"/veterinaria": [
-		"src/routes/veterinaria/+page.ts"
+	"/cotizacion": [],
+	"/productos": [
+		"src/routes/productos/+page.ts"
 	]
 }
