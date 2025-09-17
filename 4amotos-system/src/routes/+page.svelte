@@ -25,6 +25,8 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
+	<a href="/ejercicios" class="btn btn-primary">Ir a Ejercicios</a>
+
 	<Counter />
 </section>
 
