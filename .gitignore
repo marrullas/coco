@@ -119,8 +119,8 @@ jspm_packages/
 .pnp.*
 
 # SvelteKit
-/.svelte-kit
-/build
+**/.svelte-kit
+**/build
 
 # Vite
 vite.config.js.timestamp-*
