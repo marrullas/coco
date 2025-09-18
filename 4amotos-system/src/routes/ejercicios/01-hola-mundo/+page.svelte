@@ -124,7 +124,8 @@
         <summary>🔍 Ver Solución (solo después de intentar)</summary>
         <div class="codigo-solucion">
             <h3>✅ Código de Ejemplo:</h3>
-            <pre><code>&lt;div class="resultado"&gt;
+            <pre><code
+                    >&lt;div class="resultado"&gt;
     &lt;h1&gt;¡Hola, soy María!&lt;/h1&gt;
     &lt;p&gt;Tengo 20 años y estudio ADSO&lt;/p&gt;
     &lt;ul&gt;
