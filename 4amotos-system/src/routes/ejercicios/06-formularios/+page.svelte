@@ -39,6 +39,12 @@
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
     let ejemploTexto = $state<string>("Texto sincronizado");
     let ejemploNumero = $state<number>(42);
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '06', titulo: 'formularios' }));
 </script>
 
 <svelte:head>
@@ -312,9 +318,19 @@ let mensaje = $state&lt;string&gt;('Escribe tu mensaje aquí...');</code></pre>
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/05-contador" class="btn btn-secundario">← Anterior: Contador</a>
-        <a href="/ejercicios/07-condicionales" class="btn btn-primario">Siguiente: Condicionales →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Nivel 2: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
+
 </main>
 
 <style>

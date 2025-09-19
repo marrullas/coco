@@ -67,6 +67,12 @@
     // function miFuncionPersonalizada() {
     //     // Tu código aquí
     // }
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '04', titulo: 'botones' }));
 </script>
 
 <svelte:head>
@@ -264,8 +270,16 @@
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/03-interpolacion" class="btn-nav btn-secundario">← Anterior: Interpolación</a>
-        <a href="/ejercicios/05-contador" class="btn-nav btn-primario">Siguiente: Contador →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Siguiente: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
 </main>
 

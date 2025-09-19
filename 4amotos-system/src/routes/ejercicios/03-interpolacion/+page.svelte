@@ -34,6 +34,12 @@
     // ✏️ ESCRIBE AQUÍ MÁS VARIABLES PARA EXPERIMENTAR:
     // let ciudad = $state<string>('...');
     // let telefono = $state<string>('...');
+    
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '03', titulo: 'interpolacion' }));
 </script>
 
 <svelte:head>
@@ -296,12 +302,16 @@
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/02-variables" class="btn btn-secundario"
-            >← Anterior: Variables</a
-        >
-        <a href="/ejercicios/04-botones" class="btn btn-primario"
-            >Siguiente: Botones →</a
-        >
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Siguiente: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
 </main>
 

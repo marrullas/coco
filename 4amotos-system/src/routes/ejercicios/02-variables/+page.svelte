@@ -38,6 +38,12 @@
     let ejemploTexto = $state<string>("¡Hola Svelte 5!");
     let ejemploNumero = $state<number>(42);
     let ejemploBooleano = $state<boolean>(true);
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '02', titulo: 'variables' }));
 </script>
 
 <svelte:head>
@@ -250,12 +256,16 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/01-hola-mundo" class="btn btn-secundario"
-            >← Anterior: Hola Mundo</a
-        >
-        <a href="/ejercicios/03-interpolacion" class="btn btn-primario"
-            >Siguiente: Interpolación →</a
-        >
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Siguiente: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
 </main>
 

@@ -40,6 +40,12 @@
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
     let ejemploNumero = $state<number>(50);
     let ejemploBoolean = $state<boolean>(true);
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '07', titulo: 'condicionales' }));
 </script>
 
 <svelte:head>
@@ -334,9 +340,19 @@ let estaLogueado = $state&lt;boolean&gt;(false);</code></pre>
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/06-formularios" class="btn btn-secundario">← Anterior: Formularios</a>
-        <a href="/ejercicios/08-listas" class="btn btn-primario">Siguiente: Listas →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Nivel 2: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
+    
 </main>
 
 <style>

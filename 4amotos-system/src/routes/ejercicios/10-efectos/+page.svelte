@@ -176,6 +176,12 @@
         segundosTranscurridos = 0;
         agregarLog(`🔄 Timer reseteado`);
     }
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '10', titulo: 'efectos' }));
 </script>
 
 <svelte:head>
@@ -439,9 +445,23 @@
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/09-derivados" class="btn btn-secundario">← Anterior: Derivados</a>
-        <a href="/ejercicios" class="btn btn-primario">🎉 ¡Completaste el Nivel 2! →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+        
+        {#if navegacion.volver}
+            <a href={navegacion.volver} class="btn btn-warning">🎉 ¡Nivel 2 Completado!</a>
+        {/if}
+
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Nivel 3: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
+
 </main>
 
 <style>
@@ -1058,6 +1078,12 @@
     .btn-secundario:hover {
         border-color: var(--color-secundario);
         color: var(--color-texto);
+    }
+
+    .btn-warning {
+        background: #059669;
+        transform: translateY(-2px);
+        color: white;
     }
 
     /* Responsive */

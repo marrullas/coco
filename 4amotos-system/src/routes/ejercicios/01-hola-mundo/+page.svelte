@@ -8,7 +8,6 @@
 ║ TIEMPO ESTIMADO: 15 minutos                                                         ║
 ╚══════════════════════════════════════════════════════════════════════════════════════╝
 -->
-
 <script lang="ts">
     // 🎯 INSTRUCCIONES PARA EL ESTUDIANTE:
     // 1. Lee todas las instrucciones antes de empezar
@@ -22,6 +21,12 @@
     // - Sección <style> para estilos
 
     // ✅ META: Al final de este ejercicio sabrás crear un componente básico
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '01', titulo: 'hola-mundo' }));
 </script>
 
 <svelte:head>
@@ -140,12 +145,14 @@
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios" class="btn btn-secundario"
-            >← Volver a Ejercicios</a
+        <a href={navegacion.volver} class="btn btn-secundario"
+            >← Anterior: Volver a Ejercicios</a
         >
-        <a href="/ejercicios/02-variables" class="btn btn-primario"
-            >Siguiente: Variables →</a
-        >
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Siguiente: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
 </main>
 

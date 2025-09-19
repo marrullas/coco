@@ -8,52 +8,16 @@
 -->
 
 <script lang="ts">
-    // Lista de todos los ejercicios organizados por nivel
-    const ejercicios = [
-        {
-            nivel: "🟢 NIVEL 1: Fundamentos Básicos",
-            descripcion: "Conceptos esenciales para empezar",
-            ejercicios: [
-                { id: "01", titulo: "Hola Mundo", descripcion: "Tu primer componente Svelte", ruta: "/ejercicios/01-hola-mundo" },
-                { id: "02", titulo: "Variables", descripcion: "Usando $state() para crear variables reactivas", ruta: "/ejercicios/02-variables" },
-                { id: "03", titulo: "Interpolación", descripcion: "Mostrar variables en HTML con {}", ruta: "/ejercicios/03-interpolacion" },
-                { id: "04", titulo: "Botones", descripcion: "Eventos onclick básicos", ruta: "/ejercicios/04-botones" },
-                { id: "05", titulo: "Contador", descripcion: "Incrementar y decrementar números", ruta: "/ejercicios/05-contador" }
-            ]
-        },
-        {
-            nivel: "🟡 NIVEL 2: Reactividad e Interacción",
-            descripcion: "Haciendo páginas interactivas",
-            ejercicios: [
-                { id: "06", titulo: "Formularios", descripcion: "bind:value en inputs", ruta: "/ejercicios/06-formularios" },
-                { id: "07", titulo: "Condicionales", descripcion: "{#if} para mostrar/ocultar", ruta: "/ejercicios/07-condicionales" },
-                { id: "08", titulo: "Listas", descripcion: "{#each} para arrays", ruta: "/ejercicios/08-listas" },
-                { id: "09", titulo: "Valores Derivados", descripcion: "$derived() para cálculos automáticos", ruta: "/ejercicios/09-derivados" },
-                { id: "10", titulo: "Efectos", descripcion: "$effect() para reaccionar a cambios", ruta: "/ejercicios/10-efectos" }
-            ]
-        },
-        {
-            nivel: "🟠 NIVEL 3: Componentes y Organización",
-            descripcion: "Construyendo aplicaciones modulares",
-            ejercicios: [
-                { id: "11", titulo: "Componente Simple", descripcion: "Tu primer componente reutilizable", ruta: "/ejercicios/11-componente-simple" },
-                { id: "12", titulo: "Props", descripcion: "$props() para pasar datos", ruta: "/ejercicios/12-props" },
-                { id: "13", titulo: "Eventos Custom", descripcion: "Comunicación entre componentes", ruta: "/ejercicios/13-eventos-custom" },
-                { id: "14", titulo: "Slots", descripcion: "Contenido flexible en componentes", ruta: "/ejercicios/14-slots" }
-            ]
-        },
-        {
-            nivel: "🔴 NIVEL 4: Aplicaciones Reales",
-            descripcion: "Proyectos completos y funcionales",
-            ejercicios: [
-                { id: "15", titulo: "Todo App", descripcion: "Lista de tareas completa", ruta: "/ejercicios/15-todo-app" },
-                { id: "16", titulo: "Forms Avanzados", descripcion: "Validación y manejo de errores", ruta: "/ejercicios/16-forms-avanzados" },
-                { id: "17", titulo: "Routing", descripcion: "Navegación entre páginas", ruta: "/ejercicios/17-routing" },
-                { id: "18", titulo: "Stores", descripcion: "Estado global compartido", ruta: "/ejercicios/18-stores" }
-            ]
-        }
-    ];
-
+    import { page } from '$app/state';
+    import { detectarRutaBase, generarRutasEjercicios } from '$lib/utils/navigation.js';
+    import { ejerciciosData } from '$lib/data/ejercicios.js';
+    
+    // Detectar automáticamente la ruta base del directorio actual
+    const rutaBase = $derived(detectarRutaBase(page.url.pathname));
+    
+    // Generar ejercicios con rutas dinámicas
+    const ejercicios = $derived(generarRutasEjercicios(ejerciciosData, rutaBase));
+    
     let totalEjercicios = $derived(ejercicios.reduce((total, nivel) => total + nivel.ejercicios.length, 0));
 </script>
 

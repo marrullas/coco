@@ -56,6 +56,12 @@
     function eliminarFruta(index: number) {
         ejemploFrutas.splice(index, 1);
     }
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '08', titulo: 'listas' }));
 </script>
 
 <svelte:head>
@@ -369,9 +375,19 @@ let tareas = $state&lt;&#123;id: number, texto: string, completada: boolean&#125
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/07-condicionales" class="btn btn-secundario">← Anterior: Condicionales</a>
-        <a href="/ejercicios/09-derivados" class="btn btn-primario">Siguiente: Derivados →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn btn-primario"
+                >Nivel 2: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
+    
 </main>
 
 <style>

@@ -99,6 +99,13 @@
     // function elevarAlCuadrado() {
     //     // Tu código aquí
     // }
+
+    // 🧭 Navegación dinámica
+    import { page } from '$app/state';
+    import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+
+    const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '05', titulo: 'contador' }));
+
 </script>
 
 <svelte:head>
@@ -373,9 +380,21 @@ let cercaDelLimite = &#36;derived(Math.abs(contador) &gt;= limite * 0.8);
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/04-botones" class="btn-nav btn-secundario">← Anterior: Botones</a>
-        <a href="/ejercicios" class="btn-nav btn-warning">🎉 ¡Nivel 1 Completado!</a>
-        <a href="/ejercicios/06-formularios" class="btn-nav btn-primario">Nivel 2: Formularios →</a>
+        {#if navegacion.anterior}
+            <a href={navegacion.anterior.url} class="btn-nav btn-secundario"
+                >← Anterior: {navegacion.anterior.nombre}</a
+            >
+        {/if}
+        
+        {#if navegacion.volver}
+            <a href={navegacion.volver} class="btn-nav btn-warning">🎉 ¡Nivel 1 Completado!</a>
+        {/if}
+
+        {#if navegacion.siguiente}
+            <a href={navegacion.siguiente.url} class="btn-nav btn-primario"
+                >Nivel 2: {navegacion.siguiente.nombre} →</a
+            >
+        {/if}
     </nav>
 </main>
 
