@@ -22,7 +22,7 @@
 
     // ✏️ TAREA 1: Crea tus primeras variables reactivas
     // Ejemplo ya creado para ti:
-    let nombre = $state<string>('Tu Nombre Aquí');
+    let nombre = $state<string>("Tu Nombre Aquí");
 
     // TODO: Crea las siguientes variables usando $state():
     // - edad: un número con tu edad
@@ -35,7 +35,7 @@
     // let materiaFavorita = $state<string>(...);
 
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
-    let ejemploTexto = $state<string>('¡Hola Svelte 5!');
+    let ejemploTexto = $state<string>("¡Hola Svelte 5!");
     let ejemploNumero = $state<number>(42);
     let ejemploBooleano = $state<boolean>(true);
 </script>
@@ -89,7 +89,10 @@
 
         <div class="tarea">
             <h3>📝 Tarea 1: Declarar Variables</h3>
-            <p><strong>Instrucción:</strong> Ve al script y crea las variables que faltan</p>
+            <p>
+                <strong>Instrucción:</strong> Ve al script y crea las variables que
+                faltan
+            </p>
 
             <div class="resultado">
                 <h3>🔍 Variables de Ejemplo (funcionando):</h3>
@@ -108,13 +111,17 @@
             </div>
 
             <div class="pista">
-                💡 <strong>Pista:</strong> Usa el mismo patrón: <code>let miVariable = $state&lt;tipo&gt;(valor);</code>
+                💡 <strong>Pista:</strong> Usa el mismo patrón:
+                <code>let miVariable = $state&lt;tipo&gt;(valor);</code>
             </div>
         </div>
 
         <div class="tarea">
             <h3>📝 Tarea 2: Mostrar Tus Variables</h3>
-            <p><strong>Instrucción:</strong> Descomenta las líneas de abajo para ver tus variables</p>
+            <p>
+                <strong>Instrucción:</strong> Descomenta las líneas de abajo para
+                ver tus variables
+            </p>
 
             <div class="resultado">
                 <h3>🎯 Tus Variables:</h3>
@@ -141,31 +148,42 @@
                 -->
 
                 <div class="placeholder">
-                    👆 Descomenta las líneas de arriba cuando hayas creado tus variables
+                    👆 Descomenta las líneas de arriba cuando hayas creado tus
+                    variables
                 </div>
             </div>
 
             <div class="pista">
-                💡 <strong>Pista:</strong> Para descomentar, elimina los <code>&lt;!--</code> y <code>--&gt;</code>
+                💡 <strong>Pista:</strong> Para descomentar, elimina los
+                <code>&lt;!--</code>
+                y <code>--&gt;</code>
             </div>
         </div>
 
         <div class="tarea">
             <h3>📝 Tarea 3: Experimenta</h3>
-            <p><strong>Instrucción:</strong> Cambia los valores de tus variables y observa cómo se actualiza la pantalla automáticamente</p>
+            <p>
+                <strong>Instrucción:</strong> Cambia los valores de tus variables
+                y observa cómo se actualiza la pantalla automáticamente
+            </p>
 
             <div class="experimento">
                 <p>🧪 <strong>Experimenta cambiando:</strong></p>
                 <ul>
                     <li>El valor de <code>nombre</code> por tu nombre real</li>
                     <li>El valor de <code>edad</code> por tu edad real</li>
-                    <li>El valor de <code>esEstudiante</code> entre true y false</li>
-                    <li>El valor de <code>materiaFavorita</code> por otra materia</li>
+                    <li>
+                        El valor de <code>esEstudiante</code> entre true y false
+                    </li>
+                    <li>
+                        El valor de <code>materiaFavorita</code> por otra materia
+                    </li>
                 </ul>
             </div>
 
             <div class="pista">
-                💡 <strong>Pista:</strong> Guarda el archivo y la página se actualizará automáticamente
+                💡 <strong>Pista:</strong> Guarda el archivo y la página se actualizará
+                automáticamente
             </div>
         </div>
     </section>
@@ -176,14 +194,20 @@
 
         <div class="concepto-teoria">
             <h3>🔥 $state() en Svelte 5</h3>
-            <p>En Svelte 5, usamos <code>$state()</code> para crear variables reactivas. Esto significa que cuando cambias el valor de la variable, la pantalla se actualiza automáticamente.</p>
+            <p>
+                En Svelte 5, usamos <code>$state()</code> para crear variables reactivas.
+                Esto significa que cuando cambias el valor de la variable, la pantalla
+                se actualiza automáticamente.
+            </p>
 
             <div class="codigo-ejemplo">
-                <pre><code>// ✅ Forma correcta en Svelte 5
+                <pre><code
+                        >// ✅ Forma correcta en Svelte 5
 let nombre = $state&lt;string&gt;('María');
 
 // ❌ Forma antigua (Svelte 4)
-let nombre = 'María';</code></pre>
+let nombre = 'María';</code
+                    ></pre>
             </div>
         </div>
 
@@ -214,18 +238,24 @@ let nombre = 'María';</code></pre>
         <summary>🔍 Ver Solución (solo después de intentar)</summary>
         <div class="codigo-solucion">
             <h3>✅ Código Completo:</h3>
-            <pre><code>// Variables reactivas con $state()
+            <pre><code
+                    >// Variables reactivas con $state()
 let nombre = $state&lt;string&gt;('Ana García');
 let edad = $state&lt;number&gt;(20);
 let esEstudiante = $state&lt;boolean&gt;(true);
-let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
+let materiaFavorita = $state&lt;string&gt;('Programación');</code
+                ></pre>
         </div>
     </details>
 
     <!-- 🔄 NAVEGACIÓN -->
     <nav class="navegacion">
-        <a href="/ejercicios/01-hola-mundo" class="btn btn-secundario">← Anterior: Hola Mundo</a>
-        <a href="/ejercicios/03-interpolacion" class="btn btn-primario">Siguiente: Interpolación →</a>
+        <a href="/ejercicios/01-hola-mundo" class="btn btn-secundario"
+            >← Anterior: Hola Mundo</a
+        >
+        <a href="/ejercicios/03-interpolacion" class="btn btn-primario"
+            >Siguiente: Interpolación →</a
+        >
     </nav>
 </main>
 
@@ -248,7 +278,7 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         margin: 0 auto;
         padding: 2rem;
         background: var(--color-fondo);
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: "Inter", system-ui, sans-serif;
         line-height: 1.6;
         color: var(--color-texto);
     }
@@ -280,11 +310,13 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         margin-bottom: 1.5rem;
     }
 
-    .objetivos, .conceptos {
+    .objetivos,
+    .conceptos {
         margin-bottom: 1.5rem;
     }
 
-    .objetivos h2, .conceptos h2 {
+    .objetivos h2,
+    .conceptos h2 {
         color: var(--color-texto);
         margin-bottom: 0.75rem;
         font-size: 1.25rem;
@@ -299,7 +331,7 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         background: #f1f5f9;
         padding: 0.2rem 0.4rem;
         border-radius: 0.25rem;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
         font-size: 0.875rem;
     }
 
@@ -321,7 +353,7 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         display: block;
         color: var(--color-primario);
         margin-bottom: 0.25rem;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
     }
 
     .concepto span {
@@ -371,13 +403,13 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         font-weight: 600;
         color: var(--color-texto);
         min-width: 120px;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
     }
 
     .value {
         padding: 0.25rem 0.75rem;
         border-radius: 0.25rem;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
         font-weight: 600;
     }
 
@@ -423,7 +455,7 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         background: #dbeafe;
         padding: 0.2rem 0.4rem;
         border-radius: 0.25rem;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
     }
 
     /* Teoría */
@@ -492,7 +524,7 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
         padding: 0.5rem;
         border-radius: 0.25rem;
         margin: 0.5rem 0;
-        font-family: 'Monaco', monospace;
+        font-family: "Monaco", monospace;
     }
 
     .tipo span {
@@ -584,7 +616,9 @@ let materiaFavorita = $state&lt;string&gt;('Programación');</code></pre>
             padding: 1rem;
         }
 
-        .instrucciones, .area-trabajo, .teoria {
+        .instrucciones,
+        .area-trabajo,
+        .teoria {
             padding: 1.5rem;
         }
 
