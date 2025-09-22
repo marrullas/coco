@@ -38,6 +38,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/cotizacion" | "/cotizacion/" | "/productos" | "/productos/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/favicon.svg" | "/robots.txt" | string & {};
+		Asset(): "/favicon.svg" | "/img/Aceite Motul 7100.jpg" | "/img/Espejos KTM Racing.jpg" | "/img/Kit de Arrastre KTM.jpg" | "/robots.txt" | string & {};
 	}
 }
