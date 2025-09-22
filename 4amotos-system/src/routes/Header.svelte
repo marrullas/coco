@@ -25,6 +25,9 @@
 			<li aria-current={page.url.pathname === '/ejercicios' ? 'page' : undefined}>
 				<a href="/ejercicios">Ejercicios</a>
 			</li>
+			<li aria-current={page.url.pathname === '/ejercicios-Yeison' ? 'page' : undefined}>
+				<a href="/ejercicios-Yeison">Yeison</a>
+			</li>
 			<li aria-current={page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
 			</li>
