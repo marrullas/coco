@@ -52,7 +52,7 @@ export const ejerciciosData: NivelEjercicios[] = [
             { id: "11", titulo: "Componente Simple", descripcion: "Tu primer componente reutilizable" },
             { id: "12", titulo: "Props", descripcion: "$props() para pasar datos" },
             { id: "13", titulo: "Eventos Custom", descripcion: "Comunicación entre componentes" },
-            { id: "14", titulo: "Slots", descripcion: "Contenido flexible en componentes" }
+            { id: "14", titulo: "Snippets", descripcion: "Contenido flexible en componentes" }
         ]
     },
     {
