@@ -34,13 +34,6 @@
 				<a href="/ejercicios">Ejercicios</a>
 			</li>
 			<li
-				aria-current={page.url.pathname === "/mauricio-f"
-					? "page"
-					: undefined}
-			>
-				<a href="/mauricio-f">Mauricio F</a>
-			</li>
-			<li
 				aria-current={page.url.pathname.startsWith("/sverdle")
 					? "page"
 					: undefined}
