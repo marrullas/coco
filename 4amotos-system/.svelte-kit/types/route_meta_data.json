@@ -1,9 +1,0 @@
-{
-	"/": [
-		"src/routes/+page.ts"
-	],
-	"/cotizacion": [],
-	"/productos": [
-		"src/routes/productos/+page.ts"
-	]
-}
