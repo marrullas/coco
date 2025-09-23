@@ -49,7 +49,7 @@
 				</li>
 				<li>
 					<a 
-						href="/ejercicios" 
+						href="/ejercicios_wilfran" 
 						class="nav-link"
 						class:active={page.url.pathname === '/ejercicios_wilfran'}
 					>
