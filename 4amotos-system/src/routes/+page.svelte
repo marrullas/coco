@@ -11,8 +11,8 @@
 </script>
 
 <svelte:head>
-  <title>Home</title>
-  <meta name="description" content="Svelte demo app" />
+  <title>4AMotos - Inicio</title>
+  <meta name="description" content="Sistema de repuestos y cotizaciones para motos" />
 </svelte:head>
 
 <section class="flex flex-col justify-center items-center flex-0.6 min-h-screen bg-gray-100">

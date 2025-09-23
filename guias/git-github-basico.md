@@ -66,10 +66,10 @@ Working Directory → (git add) → Staging Area → (git commit) → Repository
 git init
 
 # Clonar repositorio remoto
-git clone https://github.com/usuario/repositorio.git
+git clone https://github.com/marrullas/coco.git
 
 # Clonar a una carpeta específica
-git clone https://github.com/usuario/repo.git mi-carpeta
+git clone https://github.com/marrullas/coco.git mi-carpeta
 ```
 
 ### Estado y Información
