@@ -9,7 +9,7 @@
     img: string;
   };
 
-  // --- 2. Definir el diccionario de productos por marca (Record<string, Producto[]>)
+  // --- 2. Definir productos por marca 
   const productosPorMarca: Record<string, Producto[]> = {
     "KTM Duke": [
       { 
@@ -36,19 +36,19 @@
         nombre: "Aceite Kawasaki Pro", 
         descripcion: "Lubricante para motos Kawasaki", 
         precio: 90000, 
-        img: "https://picsum.photos/400/250?4" 
+        img: "/img/Aceite Kawasaki Pro.jpg" 
       },
       { 
         nombre: "Kit de Cadena Kawasaki", 
         descripcion: "Durabilidad y resistencia garantizada", 
         precio: 340000, 
-        img: "https://picsum.photos/400/250?5" 
+        img: "/img/Kit de Cadena Kawasaki.jpg" 
       },
       { 
         nombre: "Filtro Kawasaki", 
         descripcion: "Filtros originales para alto rendimiento", 
         precio: 70000, 
-        img: "https://picsum.photos/400/250?6" 
+        img: "/img/Filtro Kawasaki.jpg" 
       }
     ],
     "Husqvarna": [
@@ -56,13 +56,13 @@
         nombre: "Aceite Husqvarna", 
         descripcion: "Protección avanzada para tu motor", 
         precio: 95000, 
-        img: "https://picsum.photos/400/250?7" 
+        img: "/img/Aceite Husqvarna.jpg" 
       },
       { 
         nombre: "Pastillas de freno Husqvarna", 
         descripcion: "Frenado seguro en todo momento", 
         precio: 80000, 
-        img: "https://picsum.photos/400/250?8" 
+        img: "/img/Pastillas de freno Husqvarna.jpg" 
       }
     ],
     "Bajaj": [
@@ -70,13 +70,13 @@
         nombre: "Kit de arrastre Bajaj", 
         descripcion: "Repuesto original para motos Bajaj", 
         precio: 280000, 
-        img: "https://picsum.photos/400/250?9" 
+        img: "/img/Kit de arrastre Bajaj.jpg" 
       },
       { 
         nombre: "Espejos Bajaj", 
         descripcion: "Estilo y funcionalidad", 
         precio: 110000, 
-        img: "https://picsum.photos/400/250?10" 
+        img: "/img/Espejos Bajaj.jpg" 
       }
     ]
   };

@@ -81,7 +81,7 @@
 
             <!-- ✏️ ESCRIBE AQUÍ - Cambia solo el texto dentro del h1 -->
             <div class="resultado">
-                <h1>¡Hola Mundo!</h1>
+                <h1>Soy wilfran</h1>
             </div>
 
             <div class="pista">
