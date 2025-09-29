@@ -82,34 +82,60 @@
   };
 
   // --- 3. Estado de la interfaz
-  let marcaSeleccionada: string = "KTM Duke";
+  let marcaSeleccionada: string = "Todos"; // muestra todo al inicio
   let busqueda: string = "";
 
   // --- 4. Filtrar productos por búsqueda con protección
   $: productosFiltrados =
-    (productosPorMarca[marcaSeleccionada] || []).filter((p: Producto) =>
+    (marcaSeleccionada === "Todos"
+      ? Object.values(productosPorMarca).flat() // unir todos los productos de todas las marcas
+      : (productosPorMarca[marcaSeleccionada] || [])
+    ).filter((p: Producto) =>
       p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
       p.descripcion.toLowerCase().includes(busqueda.toLowerCase())
     );
+
+  // --- 5. Estado y funciones para el popup de novedad
+  let mostrarPopup = false;
+  let tipoNovedad = "";
+  let descripcionNovedad = "";
+
+  function enviarNovedad() {
+    if (!tipoNovedad || !descripcionNovedad) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+    alert(`Novedad enviada: ${tipoNovedad} - ${descripcionNovedad}`);
+    mostrarPopup = false;
+    tipoNovedad = "";
+    descripcionNovedad = "";
+  }
 </script>
 
 <div class="min-h-screen bg-gray-100 p-6">
   <h1 class="text-3xl font-bold text-center mb-4 text-orange-600">Marketplace de Repuestos</h1>
 
   <!-- Selector de marca y barra de búsqueda -->
-  <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
-    <select bind:value={marcaSeleccionada} class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
-      <option value="KTM Duke">KTM Duke</option>
-      <option value="Kawasaki">Kawasaki</option>
-      <option value="Husqvarna">Husqvarna</option>
-      <option value="Bajaj">Bajaj</option>
-    </select>
-    <input
-      type="text"
-      placeholder="Buscar repuesto..."
-      bind:value={busqueda}
-      class="border border-gray-300 rounded-lg p-2 w-64 focus:outline-none focus:ring-2 focus:ring-orange-500"
-    />
+  <div class="flex flex-col items-center mb-6">
+    <p class="mb-2 text-sm text-gray-600">Seleccione una marca para filtrar:</p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+      <select
+        bind:value={marcaSeleccionada}
+        class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      >
+        <option value="Todos">Todos</option>
+        <option value="KTM Duke">KTM Duke</option>
+        <option value="Kawasaki">Kawasaki</option>
+        <option value="Husqvarna">Husqvarna</option>
+        <option value="Bajaj">Bajaj</option>
+      </select>
+      <input
+        type="text"
+        placeholder="Buscar repuesto..."
+        bind:value={busqueda}
+        class="border border-gray-300 rounded-lg p-2 w-64 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      />
+    </div>
   </div>
 
   <!-- Grid de productos -->
@@ -121,17 +147,58 @@
           <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
             <span>🏍️</span> {producto.nombre}
           </h2>
-          <p class="text-gray-600 mt-1">{producto.descripcion}</p>
-          <p class="text-orange-600 font-bold mt-2">${producto.precio.toLocaleString()}</p>
+          <p class="text-sm text-gray-500 mt-2">{producto.descripcion}</p>
+          <p class="mt-3 font-bold text-orange-600">COP ${producto.precio.toLocaleString("es-CO")}</p>
         </div>
       </div>
     {/each}
+    {#if productosFiltrados.length === 0}
+      <p class="col-span-full text-center text-gray-500">No hay repuestos que coincidan con la búsqueda.</p>
+    {/if}
   </div>
 
-  <!-- Sección de ayuda/contacto -->
+  <!-- Sección de ayuda/contacto con botón para abrir el pop-up -->
   <div class="mt-10 text-center text-gray-500">
-    ¿Apreciado colaborador, deseas reportar alguna novedad con el sistema? <a href="mailto:soporte@turepuestos.com" class="text-orange-600 underline">Reporta aca</a>
+    ¿Apreciado colaborador, deseas reportar alguna novedad con el sistema?  
+    <button 
+      class="text-orange-600 underline hover:text-orange-800 ml-2"
+      on:click={() => mostrarPopup = true}>
+      Reporta aquí
+    </button>
   </div>
-</div>
 
- 
+  <!-- Pop-up para reportar novedad -->
+  {#if mostrarPopup}
+    <div class="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+      <div class="bg-white rounded-lg p-6 w-80 shadow-lg">
+        <h2 class="text-lg font-bold mb-4">Reportar Novedad</h2>
+
+        <!-- Menú desplegable -->
+        <label class="block mb-2" for="tipoNovedad">Tipo de Novedad</label>
+        <select id="tipoNovedad" bind:value={tipoNovedad} class="border border-gray-300 rounded w-full p-2 mb-4">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="Error de Stock">Error de Stock</option>
+          <option value="Error de Precio">Error de Precio</option>
+          <option value="Problema de Navegación">Problema de Navegación</option>
+          <option value="Imagen de producto erronea">Imagen de producto erronea</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <!-- Campo de texto -->
+        <label class="block mb-2" for="descripcionNovedad">Descripción</label>
+        <textarea 
+          id="descripcionNovedad"
+          bind:value={descripcionNovedad} 
+          rows="3" 
+          class="border border-gray-300 rounded w-full p-2 mb-4" 
+          placeholder="Describa la novedad..."></textarea>
+
+        <!-- Botones -->
+        <div class="flex justify-end gap-2">
+          <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400" on:click={() => mostrarPopup = false}>Cancelar</button>
+          <button class="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600" on:click={enviarNovedad}>Enviar</button>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div>
