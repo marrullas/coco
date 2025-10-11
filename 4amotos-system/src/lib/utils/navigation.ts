@@ -30,13 +30,45 @@ function generarSlugSeguro(titulo: string): string {
 /**
  * Detecta automáticamente la ruta base del directorio de ejercicios actual
  * @param currentPath - La ruta actual de la página
- * @returns La ruta base del directorio (ej: '/ejercicios' o '/ejercicios_Yeison_Ramirez')
+ * @returns La ruta base del directorio (ej: '/ejercicios', '/mauricio-f', '/ejercicios_Yeison_Ramirez')
  */
 export function detectarRutaBase(currentPath: string): string {
-    const segments = currentPath.split('/');
-    // Buscar el segmento que comience con 'ejercicios'
-    const ejerciciosSegment = segments.find(segment => segment.startsWith('ejercicios'));
-    return ejerciciosSegment ? `/${ejerciciosSegment}` : '/ejercicios';
+    const segments = currentPath.split('/').filter(segment => segment.length > 0);
+
+    // Si no hay segmentos, retornar ejercicios por defecto
+    if (segments.length === 0) return '/ejercicios';
+
+    // El primer segmento después de la raíz es nuestro directorio base
+    const firstSegment = segments[0];
+
+    // Casos especiales para directorios conocidos de ejercicios:
+
+    // 1. Si es 'ejercicios' (directorio original)
+    if (firstSegment === 'ejercicios') {
+        return '/ejercicios';
+    }
+
+    // 2. Si empieza con 'ejercicios_' (para casos como 'ejercicios_Nombre_Apellido')
+    if (firstSegment.startsWith('ejercicios_')) {
+        return `/${firstSegment}`;
+    }
+
+    // 3. Para cualquier otro directorio que contenga ejercicios copiados,
+    //    asumir que es un directorio de estudiante si:
+    //    - No es una ruta del sistema (como 'api', 'static', etc.)
+    //    - No contiene caracteres especiales que indiquen que no es un directorio de usuario
+    const sistemDirectories = ['api', 'static', 'assets', 'favicon.ico'];
+    const isSystemPath = sistemDirectories.includes(firstSegment) ||
+                        firstSegment.includes('.') ||
+                        firstSegment.startsWith('_');
+
+    if (!isSystemPath) {
+        // Asumir que es un directorio de estudiante
+        return `/${firstSegment}`;
+    }
+
+    // Fallback a ejercicios por defecto
+    return '/ejercicios';
 }
 
 /**

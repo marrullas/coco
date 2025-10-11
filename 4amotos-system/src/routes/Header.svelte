@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import logo from '$lib/images/svelte-logo.svg';
+	import github from '$lib/images/github.svg';
 </script>
 
 <header class="modern-header">
@@ -13,52 +15,30 @@
 			/>
 			<h1 class="brand-name">4AMotos</h1>
 		</a>
+	</div>
 
-		<!-- Navegación principal -->
-		<nav class="main-nav">
-			<ul class="nav-list">
-				<li>
-					<a 
-						href="/" 
-						class="nav-link" 
-						class:active={page.url.pathname === '/'}
-					>
-						<span class="nav-icon">🏠</span>
-						Inicio
-					</a>
-				</li>
-				<li>
-					<a 
-						href="/productos" 
-						class="nav-link"
-						class:active={page.url.pathname === '/productos'}
-					>
-						<span class="nav-icon">🔧</span>
-						Productos
-					</a>
-				</li>
-				<li>
-					<a 
-						href="/cotizacion" 
-						class="nav-link"
-						class:active={page.url.pathname === '/cotizacion'}
-					>
-						<span class="nav-icon">💰</span>
-						Cotización
-					</a>
-				</li>
-				<li>
-					<a 
-						href="/ejercicios_wilfran" 
-						class="nav-link"
-						class:active={page.url.pathname === '/ejercicios_wilfran'}
-					>
-						<span class="nav-icon">📚</span>
-						Ejercicios
-					</a>
-				</li>
-			</ul>
-		</nav>
+	<nav>
+		<svg viewBox="0 0 2 3" aria-hidden="true">
+			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
+		</svg>
+		<ul>
+			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
+				<a href="/">Home</a>
+			</li>
+			<li aria-current={page.url.pathname === '/about' ? 'page' : undefined}>
+				<a href="/about">About</a>
+			</li>
+			<li aria-current={page.url.pathname === '/ejercicios' ? 'page' : undefined}>
+				<a href="/ejercicios">Ejercicios</a>
+			</li>
+			<li aria-current={page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
+				<a href="/sverdle">Sverdle</a>
+			</li>
+		</ul>
+		<svg viewBox="0 0 2 3" aria-hidden="true">
+			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+		</svg>
+	</nav>
 
 		<!-- Botón de menú móvil (para futuro) -->
 		<div class="mobile-menu-btn">
@@ -156,8 +136,11 @@
 		overflow: hidden;
 	}
 
-	.nav-link::before {
+	li[aria-current='page']::before {
+		--size: 6px;
 		content: '';
+		width: 0;
+		height: 0;
 		position: absolute;
 		top: 0;
 		left: -100%;
