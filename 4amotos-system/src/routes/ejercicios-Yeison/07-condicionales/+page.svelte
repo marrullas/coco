@@ -32,10 +32,10 @@
     // - estaLogueado: boolean (ejemplo: false)
 
     // ✏️ ESCRIBE AQUÍ TUS VARIABLES:
-    // let edad = $state<number>(...);
-    // let tieneLicencia = $state<boolean>(...);
-    // let puntuacion = $state<number>(...);
-    // let estaLogueado = $state<boolean>(...);
+    let edad = $state<number>(21);
+    let tieneLicencia = $state<boolean>(true);
+    let puntuacion = $state<number>(75);
+    let estaLogueado = $state<boolean>(false);
 
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
     let ejemploNumero = $state<number>(50);
@@ -145,7 +145,6 @@
 
             <div class="controles-personales">
                 <!-- ✏️ DESCOMENTA ESTOS CONTROLES CUANDO HAYAS CREADO LAS VARIABLES -->
-                <!--
                 <div class="control-group">
                     <label>
                         Edad:
@@ -175,7 +174,6 @@
                         Usuario logueado
                     </label>
                 </div>
-                -->
 
                 <div class="placeholder">
                     🎛️ Aquí aparecerán los controles cuando crees las variables
@@ -184,7 +182,6 @@
 
             <div class="sistema-permisos">
                 <!-- ✏️ DESCOMENTA ESTE SISTEMA CUANDO HAYAS CREADO LAS VARIABLES -->
-                <!--
                 <h4>🚗 Sistema de Permisos para Conducir:</h4>
                 {#if edad >= 18 && tieneLicencia}
                     <div class="mensaje exito">
@@ -225,7 +222,6 @@
                         <button onclick={() => estaLogueado = true}>Iniciar Sesión</button>
                     </div>
                 {/if}
-                -->
 
                 <div class="placeholder">
                     🛡️ Aquí aparecerá el sistema de permisos cuando descomentes el código

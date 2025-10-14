@@ -35,9 +35,9 @@
     // - mensaje: string (ejemplo: "")
 
     // ✏️ ESCRIBE AQUÍ TUS VARIABLES:
-    // let temperaturaActual = $state(20);
-    // let modoNocturno = $state(false);
-    // let mensaje = $state("");
+    let temperaturaActual = $state(20);
+    let modoNocturno = $state(false);
+    let mensaje = $state("");
 
     // 📊 SISTEMA DE LOGS
     let logs = $state<string[]>([]);
@@ -148,27 +148,37 @@
     // ✏️ TAREA 2: Crea tus propios efectos
     // TODO: Implementa estos efectos cuando hayas creado las variables:
 
-    // $effect(() => {
-    //     if (temperaturaActual > 25) {
-    //         agregarLog(`🌡️ Temperatura alta: ${temperaturaActual}°C`);
-    //     } else if (temperaturaActual < 10) {
-    //         agregarLog(`❄️ Temperatura baja: ${temperaturaActual}°C`);
-    //     }
-    // });
+    // Variables para rastrear valores anteriores y evitar bucles
+    let temperaturaAnterior = $state(20);
+    let modoNocturnoAnterior = $state(false);
 
-    // $effect(() => {
-    //     if (modoNocturno) {
-    //         agregarLog(`🌙 Modo nocturno activado`);
-    //         if (typeof document !== 'undefined') {
-    //             document.body.classList.add('modo-nocturno');
-    //         }
-    //     } else {
-    //         agregarLog(`☀️ Modo diurno activado`);
-    //         if (typeof document !== 'undefined') {
-    //             document.body.classList.remove('modo-nocturno');
-    //         }
-    //     }
-    // });
+    $effect(() => {
+        if (temperaturaActual !== temperaturaAnterior) {
+            if (temperaturaActual > 25) {
+                agregarLog(`🌡️ Temperatura alta: ${temperaturaActual}°C`);
+            } else if (temperaturaActual < 10) {
+                agregarLog(`❄️ Temperatura baja: ${temperaturaActual}°C`);
+            }
+        }
+        temperaturaAnterior = temperaturaActual;
+    });
+
+    $effect(() => {
+        if (modoNocturno !== modoNocturnoAnterior) {
+            if (modoNocturno) {
+                agregarLog(`🌙 Modo nocturno activado`);
+                if (typeof document !== 'undefined') {
+                    document.body.classList.add('modo-nocturno');
+                }
+            } else {
+                agregarLog(`☀️ Modo diurno activado`);
+                if (typeof document !== 'undefined') {
+                    document.body.classList.remove('modo-nocturno');
+                }
+            }
+        }
+        modoNocturnoAnterior = modoNocturno;
+    });
 
     // Funciones auxiliares
     function resetearTimer() {
@@ -327,7 +337,6 @@
 
             <div class="experimentos">
                 <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO HAYAS CREADO LAS VARIABLES -->
-                <!--
                 <div class="experimento-card">
                     <h4>🌡️ Control de Temperatura</h4>
                     <div class="control-content">
@@ -354,7 +363,6 @@
                         <div class="mensaje-count">Caracteres: {mensaje.length}</div>
                     </div>
                 </div>
-                -->
 
                 <div class="placeholder">
                     🔬 Crea las variables comentadas en el script para habilitar esta sección

@@ -35,12 +35,12 @@
     // - nota3: número (ejemplo: 78)
 
     // ✏️ ESCRIBE AQUÍ TUS VARIABLES BASE:
-    // let radio = $state<number>(...);
-    // let nombre = $state<string>(...);
-    // let apellido = $state<string>(...);
-    // let nota1 = $state<number>(...);
-    // let nota2 = $state<number>(...);
-    // let nota3 = $state<number>(...);
+    let radio = $state<number>(5);
+    let nombre = $state<string>("Yeison");
+    let apellido = $state<string>("Ramirez");
+    let nota1 = $state<number>(85);
+    let nota2 = $state<number>(92);
+    let nota3 = $state<number>(78);
 
     // ✏️ TAREA 2: Valores derivados simples
     // TODO: Crea los siguientes valores derivados:
@@ -49,9 +49,9 @@
     // - promedio: $derived((nota1 + nota2 + nota3) / 3)
 
     // ✏️ ESCRIBE AQUÍ TUS VALORES DERIVADOS:
-    // let area = $derived(...);
-    // let nombreCompleto = $derived(...);
-    // let promedio = $derived(...);
+    let area = $derived(Math.PI * radio * radio);
+    let nombreCompleto = $derived(nombre + " " + apellido);
+    let promedio = $derived((nota1 + nota2 + nota3) / 3);
 
     // ✅ EJEMPLOS FUNCIONANDO (no los cambies hasta completar el ejercicio)
     let ejemploBase1 = $state<number>(10);
@@ -66,13 +66,13 @@
 
     // ✏️ TAREA 3: Valor derivado complejo con $derived.by()
     // TODO: Crea un valor derivado complejo para calcular la calificación
-    // let calificacion = $derived.by(() => {
-    //     if (promedio >= 90) return "A - Excelente";
-    //     if (promedio >= 80) return "B - Muy Bueno";
-    //     if (promedio >= 70) return "C - Bueno";
-    //     if (promedio >= 60) return "D - Suficiente";
-    //     return "F - Insuficiente";
-    // });
+    let calificacion = $derived.by(() => {
+        if (promedio >= 90) return "A - Excelente";
+        if (promedio >= 80) return "B - Muy Bueno";
+        if (promedio >= 70) return "C - Bueno";
+        if (promedio >= 60) return "D - Suficiente";
+        return "F - Insuficiente";
+    });
 
     // ✅ EJEMPLO DE $derived.by() FUNCIONANDO
     let ejemploEstadisticas = $derived.by(() => {
@@ -248,7 +248,6 @@
 
             <div class="mis-controles">
                 <!-- ✏️ DESCOMENTA ESTOS CONTROLES CUANDO HAYAS CREADO LAS VARIABLES -->
-                <!--
                 <div class="control-group">
                     <label>
                         Radio del círculo:
@@ -294,7 +293,6 @@
                     </label>
                     <span class="valor-actual">{nota3} puntos</span>
                 </div>
-                -->
 
                 <div class="placeholder">
                     🎛️ Aquí aparecerán los controles cuando crees las variables base
@@ -303,7 +301,6 @@
 
             <div class="mis-resultados">
                 <!-- ✏️ DESCOMENTA ESTOS RESULTADOS CUANDO HAYAS CREADO LOS VALORES DERIVADOS -->
-                <!--
                 <h4>🎯 Tus Cálculos Derivados:</h4>
 
                 <div class="calculo-card">
@@ -361,7 +358,6 @@
                         <span class="valor texto">{calificacion}</span>
                     </div>
                 </div>
-                -->
 
                 <div class="placeholder">
                     📊 Aquí aparecerán tus cálculos cuando crees los valores derivados

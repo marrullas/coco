@@ -22,7 +22,7 @@
 
     // ✏️ TAREA 1: Variables para el formulario
     // Ejemplo ya creado para ti:
-    let nombre = $state<string>("Juan Pérez");
+    let nombre = $state<string>("Yeison Fabian Ramirez Suarez");
 
     // TODO: Crea las siguientes variables usando $state():
     // - edad: número (ejemplo: 25)
@@ -31,10 +31,10 @@
     // - mensaje: string (ejemplo: "Escribe tu mensaje aquí...")
 
     // ✏️ ESCRIBE AQUÍ TUS VARIABLES:
-    // let edad = $state<number>(...);
-    // let email = $state<string>(...);
-    // let telefono = $state<string>(...);
-    // let mensaje = $state<string>(...);
+    let edad = $state<number>(21);
+    let email = $state<string>("yeison@gmail.com");
+    let telefono = $state<string>("3175057031");
+    let mensaje = $state<string>("Hola, soy Yeison Ramirez estudiante de Svelte 5 y de ADSO en el SENA");
 
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
     let ejemploTexto = $state<string>("Texto sincronizado");
@@ -134,7 +134,6 @@
 
             <div class="formulario-personal">
                 <!-- ✏️ DESCOMENTA ESTE FORMULARIO CUANDO HAYAS CREADO LAS VARIABLES -->
-                <!--
                 <div class="input-group">
                     <label for="nombre">Nombre Completo:</label>
                     <input
@@ -186,7 +185,6 @@
                         rows="4"
                     ></textarea>
                 </div>
-                -->
 
                 <div class="placeholder">
                     👆 Crea las variables en el script y luego descomenta el formulario de arriba
@@ -204,7 +202,6 @@
 
             <div class="vista-previa">
                 <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO TENGAS EL FORMULARIO FUNCIONANDO -->
-                <!--
                 <h4>📊 Vista Previa de tus Datos:</h4>
                 <div class="datos-grid">
                     <div class="dato">
@@ -228,7 +225,6 @@
                         <span class="valor">{mensaje}</span>
                     </div>
                 </div>
-                -->
 
                 <div class="placeholder">
                     📊 Aquí verás tus datos cuando descomentes la vista previa

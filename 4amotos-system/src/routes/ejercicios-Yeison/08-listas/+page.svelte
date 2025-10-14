@@ -33,10 +33,18 @@
     // - tareas: array de objetos con {id, texto, completada}
 
     // ✏️ ESCRIBE AQUÍ TUS ARRAYS:
-    // let estudiantes = $state<string[]>([...]);
-    // let numeros = $state<number[]>([...]);
-    // let productos = $state<{id: number, nombre: string, precio: number}[]>([...]);
-    // let tareas = $state<{id: number, texto: string, completada: boolean}[]>([...]);
+    let estudiantes = $state<string[]>(["Ana", "Carlos", "María"]);
+    let numeros = $state<number[]>([10, 20, 30, 40, 50]);
+    let productos = $state<{id: number, nombre: string, precio: number}[]>([
+        { id: 1, nombre: "Producto 1", precio: 100 },
+        { id: 2, nombre: "Producto 2", precio: 200 },
+        { id: 3, nombre: "Producto 3", precio: 300 }
+    ]);
+    let tareas = $state<{id: number, texto: string, completada: boolean}[]>([
+        { id: 1, texto: "Tarea 1", completada: false },
+        { id: 2, texto: "Tarea 2", completada: true },
+        { id: 3, texto: "Tarea 3", completada: false }
+    ]);
 
     // ✅ ARRAYS DE EJEMPLO (no los cambies hasta completar el ejercicio)
     let ejemploFrutas = $state<string[]>(["🍎 Manzana", "🍌 Banana", "🍊 Naranja"]);
@@ -164,7 +172,6 @@
 
             <div class="mis-listas">
                 <!-- ✏️ DESCOMENTA ESTAS LISTAS CUANDO HAYAS CREADO LOS ARRAYS -->
-                <!--
                 <div class="mi-lista">
                     <h4>🎓 Mis Estudiantes:</h4>
                     <ol class="lista-estudiantes">
@@ -224,7 +231,6 @@
                         {/each}
                     </div>
                 </div>
-                -->
 
                 <div class="placeholder">
                     📝 Crea tus arrays en el script y luego descomenta las listas de arriba
