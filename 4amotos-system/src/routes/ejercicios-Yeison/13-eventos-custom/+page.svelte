@@ -26,9 +26,9 @@
     import FormularioEventoEjemplo from "$lib/components/ejercicios/FormularioEventoEjemplo.svelte";
 
     // TODO: Importa estos componentes después de crearlos:
-    // import MiBotonEvento from '$lib/components/ejercicios/MiBotonEvento.svelte';
-    // import MiFormularioEvento from '$lib/components/ejercicios/MiFormularioEvento.svelte';
-    // import MiTodoItem from '$lib/components/ejercicios/MiTodoItem.svelte';
+    import MiBotonEvento from '$lib/components/ejercicios/MiBotonEvento.svelte';
+    import MiFormularioEvento from '$lib/components/ejercicios/MiFormularioEvento.svelte';
+    import MiTodoItem from '$lib/components/ejercicios/MiTodoItem.svelte';
 
     // ✅ ESTADO DEL COMPONENTE PADRE
     let mensajeRecibido = $state<string>("Esperando eventos...");
@@ -74,6 +74,29 @@
         if (listaEventos.length > 10) {
             listaEventos = listaEventos.slice(0, 10);
         }
+    }
+
+    function handleTodoToggle(evento: CustomEvent<{ id: number; completada: boolean }>) {
+        const { id, completada } = evento.detail;
+        tareas = tareas.map(tarea =>
+            tarea.id === id ? { ...tarea, completada } : tarea
+        );
+        agregarEvento(`Tarea ${id} ${completada ? 'completada' : 'desmarcada'}`);
+    }
+
+    function handleTodoDelete(evento: CustomEvent<{ id: number }>) {
+        const { id } = evento.detail;
+        const tareaEliminada = tareas.find(t => t.id === id);
+        tareas = tareas.filter(tarea => tarea.id !== id);
+        agregarEvento(`Tarea "${tareaEliminada?.texto}" eliminada`);
+    }
+
+    function handleTodoEdit(evento: CustomEvent<{ id: number; nuevoTexto: string }>) {
+        const { id, nuevoTexto } = evento.detail;
+        tareas = tareas.map(tarea =>
+            tarea.id === id ? { ...tarea, texto: nuevoTexto } : tarea
+        );
+        agregarEvento(`Tarea ${id} editada: "${nuevoTexto}"`);
     }
 
     function limpiarEventos() {
@@ -538,32 +561,30 @@
             </div>
 
             <div class="mis-componentes-eventos">
-                <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO HAYAS CREADO LOS COMPONENTES -->
-                <!--
                 <h4>🔘 Tus Botones con Eventos:</h4>
                 <div class="grid-mis-botones">
                     <MiBotonEvento
                         texto="Acción Principal"
                         tipo="primary"
                         datos={{ categoria: 'principal' }}
-                        on:click={(e) => handleMensajePersonalizado({detail: {mensaje: `Botón clickeado: ${e.detail.texto}`, tipo: 'Click'}})}
-                        on:hover={(e) => handleMensajePersonalizado({detail: {mensaje: `Hover ${e.detail.accion} en botón`, tipo: 'Hover'}})}
+                        on:click={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Botón clickeado: ${e.detail.texto}`, tipo: 'Click' } }))}
+                        on:hover={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Hover ${e.detail.accion} en botón`, tipo: 'Hover' } }))}
                     />
                     <MiBotonEvento
                         texto="Guardar"
                         tipo="success"
                         datos={{ categoria: 'guardar' }}
-                        on:click={(e) => handleMensajePersonalizado({detail: {mensaje: `Guardado exitoso`, tipo: 'Éxito'}})}
+                        on:click={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Guardado exitoso`, tipo: 'Éxito' } }))}
                     />
                     <MiBotonEvento
                         texto="Advertencia"
                         tipo="warning"
-                        on:click={(e) => handleMensajePersonalizado({detail: {mensaje: `Acción de advertencia`, tipo: 'Alerta'}})}
+                        on:click={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Acción de advertencia`, tipo: 'Alerta' } }))}
                     />
                     <MiBotonEvento
                         texto="Eliminar"
                         tipo="danger"
-                        on:click={(e) => handleMensajePersonalizado({detail: {mensaje: `¡Elemento eliminado!`, tipo: 'Eliminado'}})}
+                        on:click={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `¡Elemento eliminado!`, tipo: 'Eliminado' } }))}
                     />
                 </div>
 
@@ -571,16 +592,27 @@
                 <div class="mi-formulario-wrapper">
                     <MiFormularioEvento
                         titulo="Formulario de Contacto"
-                        on:enviado={(e) => handleMensajePersonalizado({detail: {mensaje: `Contacto de ${e.detail.nombre} recibido`, tipo: 'Enviado'}})}
-                        on:validacion={(e) => handleMensajePersonalizado({detail: {mensaje: `Error en ${e.detail.campo}: ${e.detail.error}`, tipo: 'Error'}})}
-                        on:focus={(e) => handleMensajePersonalizado({detail: {mensaje: `Editando campo: ${e.detail.campo}`, tipo: 'Focus'}})}
+                        on:enviado={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Contacto de ${e.detail.nombre} recibido`, tipo: 'Enviado' } }))}
+                        on:validacion={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Error en ${e.detail.campo}: ${e.detail.error}`, tipo: 'Error' } }))}
+                        on:focus={(e) => handleMensajePersonalizado(new CustomEvent('mensaje', { detail: { mensaje: `Editando campo: ${e.detail.campo}`, tipo: 'Focus' } }))}
                     />
                 </div>
-                -->
 
-                <div class="placeholder">
-                    📡 Crea los componentes MiBotonEvento y MiFormularioEvento
-                    para ver eventos custom en acción
+                <h4>📋 Tu Lista de Tareas con Eventos:</h4>
+                <div class="mi-todo-wrapper">
+                    {#each tareas as tarea (tarea.id)}
+                        <MiTodoItem
+                            id={tarea.id}
+                            texto={tarea.texto}
+                            completada={tarea.completada}
+                            on:toggle={handleTodoToggle}
+                            on:delete={handleTodoDelete}
+                            on:edit={handleTodoEdit}
+                        />
+                    {/each}
+                    {#if tareas.length === 0}
+                        <div class="sin-tareas">No hay tareas pendientes</div>
+                    {/if}
                 </div>
             </div>
 
@@ -1136,16 +1168,6 @@
         text-align: center;
         color: var(--color-secundario);
         font-style: italic;
-    }
-
-    .placeholder {
-        text-align: center;
-        color: var(--color-secundario);
-        font-style: italic;
-        padding: 2rem;
-        background: #f8fafc;
-        border-radius: 0.5rem;
-        border: 2px dashed var(--color-borde);
     }
 
     /* Teoría */

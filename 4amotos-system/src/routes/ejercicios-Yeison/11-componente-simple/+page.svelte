@@ -26,10 +26,10 @@
     import TarjetaEjemplo from "$lib/components/ejercicios/TarjetaEjemplo.svelte";
     import BotonEjemplo from "$lib/components/ejercicios/BotonEjemplo.svelte";
 
-    // TODO: Importa estos componentes después de crearlos:
-    // import MiTarjeta from '$lib/components/ejercicios/MiTarjeta.svelte';
-    // import MiBoton from '$lib/components/ejercicios/MiBoton.svelte';
-    // import EstadisticaCard from '$lib/components/ejercicios/EstadisticaCard.svelte';
+    // Componentes creados por el estudiante
+    import MiTarjeta from '$lib/components/ejercicios/MiTarjeta.svelte';
+    import MiBoton from '$lib/components/ejercicios/MiBoton.svelte';
+    import EstadisticaCard from '$lib/components/ejercicios/EstadisticaCard.svelte';
 
     // ✅ VARIABLES DE EJEMPLO
     let contadorClics = $state<number>(0);
@@ -307,8 +307,6 @@
             </div>
 
             <div class="mis-componentes">
-                <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO HAYAS CREADO LOS COMPONENTES -->
-                <!--
                 <h4>🎨 Tus Componentes en Acción:</h4>
                 <div class="grid-mis-componentes">
                     <MiTarjeta
@@ -337,7 +335,6 @@
                 <div class="mensaje-resultado">
                     Mensaje: <span class="mensaje-texto">{mensaje}</span>
                 </div>
-                -->
 
                 <div class="placeholder">
                     📦 Crea los archivos de componentes y luego descomenta esta
@@ -497,8 +494,6 @@
                     </div>
                 </div>
 
-                <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO HAYAS CREADO EL COMPONENTE AVANZADO -->
-                <!--
                 <div class="estadisticas-demo">
                     <h4>📊 Componentes con Estado Interno:</h4>
                     <div class="grid-estadisticas">
@@ -527,12 +522,6 @@
                             color="red"
                         />
                     </div>
-                </div>
-                -->
-
-                <div class="placeholder">
-                    📊 Crea el componente EstadisticaCard para ver estadísticas
-                    interactivas
                 </div>
             </div>
 
@@ -948,16 +937,6 @@
         background: var(--color-codigo);
         border-radius: 0.5rem;
         border: 1px solid var(--color-borde);
-    }
-
-    .placeholder {
-        text-align: center;
-        color: var(--color-secundario);
-        font-style: italic;
-        padding: 2rem;
-        background: #f8fafc;
-        border-radius: 0.5rem;
-        border: 2px dashed var(--color-borde);
     }
 
     /* Teoría */

@@ -25,10 +25,10 @@
     import TarjetaPerfilEjemplo from "$lib/components/ejercicios/TarjetaPerfilEjemplo.svelte";
     import ProductoCardEjemplo from "$lib/components/ejercicios/ProductoCardEjemplo.svelte";
 
-    // TODO: Importa estos componentes después de crearlos:
-    // import MiTarjetaPerfil from '$lib/components/ejercicios/MiTarjetaPerfil.svelte';
-    // import MiNotificacion from '$lib/components/ejercicios/MiNotificacion.svelte';
-    // import MiProgreso from '$lib/components/ejercicios/MiProgreso.svelte';
+    // Componentes creados por el estudiante
+    import MiTarjetaPerfil from '$lib/components/ejercicios/MiTarjetaPerfil.svelte';
+    import MiNotificacion from '$lib/components/ejercicios/MiNotificacion.svelte';
+    import MiProgreso from '$lib/components/ejercicios/MiProgreso.svelte';
 
     // ✅ DATOS DE EJEMPLO
     let usuarios = $state([
@@ -500,8 +500,6 @@
             </div>
 
             <div class="mis-componentes-props">
-                <!-- ✏️ DESCOMENTA ESTA SECCIÓN CUANDO HAYAS CREADO LOS COMPONENTES -->
-                <!--
                 <h4>👤 Tus Tarjetas de Perfil:</h4>
                 <div class="grid-mis-perfiles">
                     <MiTarjetaPerfil
@@ -547,11 +545,28 @@
                         tipo="advertencia"
                     />
                 </div>
-                -->
 
-                <div class="placeholder">
-                    📤 Crea los componentes MiTarjetaPerfil y MiNotificacion
-                    para ver tus props en acción
+                <h4>📊 Tus Barras de Progreso:</h4>
+                <div class="mis-progresos">
+                    <MiProgreso
+                        titulo="Progreso del Proyecto"
+                        valor={75}
+                        maximo={100}
+                        color="blue"
+                    />
+                    <MiProgreso
+                        titulo="Tareas Completadas"
+                        valor={12}
+                        maximo={20}
+                        color="green"
+                    />
+                    <MiProgreso
+                        titulo="Habilidades Aprendidas"
+                        valor={8}
+                        maximo={15}
+                        color="orange"
+                        mostrarPorcentaje={false}
+                    />
                 </div>
             </div>
 
@@ -1032,6 +1047,13 @@
         border: 1px solid var(--color-borde);
     }
 
+    .mis-progresos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
     /* Tipos de props */
     .tipos-props {
         margin: 1.5rem 0;
@@ -1105,16 +1127,6 @@
     .ejemplo-completo h4 {
         margin: 0 0 1rem 0;
         color: #065f46;
-    }
-
-    .placeholder {
-        text-align: center;
-        color: var(--color-secundario);
-        font-style: italic;
-        padding: 2rem;
-        background: #f8fafc;
-        border-radius: 0.5rem;
-        border: 2px dashed var(--color-borde);
     }
 
     /* Teoría */
