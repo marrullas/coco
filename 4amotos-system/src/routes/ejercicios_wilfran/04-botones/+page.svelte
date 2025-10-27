@@ -64,10 +64,22 @@
     }
 
     // ✏️ AGREGA TUS PROPIAS FUNCIONES AQUÍ:
-    // function miFuncionPersonalizada() {
-    //     // Tu código aquí
-    // }
 
+    function miFuncionPersonalizada() {
+        const emojis = ['🎉', '🚀', '⭐', '🎯', '🔥'];
+        const frases = [
+            '¡Programar no es facil, pero lejos de ser imposible!',
+            '¡Un dia a la vez!',
+            '¡A programar solo se aprende programando By= Mauro Frenandez!',
+            '¡La práctica hace al maestro!',
+            '¡De los errores tambien se aprende!'
+        ];
+        const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
+        const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+        mensaje = `${fraseAleatoria} ${emojiAleatorio}`;
+        vecesClickeado = vecesClickeado * 2; // Duplica el contador
+    }
+    
     // 🧭 Navegación dinámica
     import { page } from '$app/state';
     import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
@@ -168,17 +180,15 @@
             <h3>📝 Tarea 3: Crea Tu Propio Botón</h3>
             <p><strong>Instrucción:</strong> Agrega tu propia función y botón</p>
 
-            <div class="area-experimental">
-                <!-- ✏️ AGREGA TU BOTÓN PERSONALIZADO AQUÍ -->
-                <!-- Ejemplo:
-                <button onclick={miFuncionPersonalizada} class="btn btn-custom">
+            <div class="text-center mt-8">
+            <p class="text-xl font-semibold text-gray-700 mb-4">{mensaje}</p>
+            <button onclick={miFuncionPersonalizada} class="btn btn-custom">
                     🚀 Mi Botón Especial
                 </button>
-                -->
 
-                <div class="placeholder">
-                    👆 Agrega tu botón personalizado aquí
-                </div>
+
+
+                
             </div>
 
             <div class="ideas">

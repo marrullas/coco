@@ -21,15 +21,20 @@
     // - Concatenación de texto y variables
 
     // ✏️ VARIABLES PARA EL EJERCICIO
-    let nombre = $state<string>("Ana");
-    let apellido = $state<string>("García");
-    let edad = $state<number>(20);
+    let nombre = $state<string>("Wilfran");
+    let apellido = $state<string>("Castellanos");
+    let edad = $state<number>(25);
     let esEstudiante = $state<boolean>(true);
+    let sexo = $state<string>("Masculino");
 
     // TODO: Crea estas variables adicionales:
-    let universidad = $state<string>("SENA");
-    let semestre = $state<number>(4);
-    let promedio = $state<number>(4.2);
+    let universidad = $state<string>("SENA-Regional Cali-Especies Menores");
+    let semestre = $state<number>(5);
+    let promedio = $state<number>(4.9);
+    let ciudad = $state<string>("Bogota");
+    let modalidad = $state<string>("virtual");
+    let Instructor = $state<string>("Mauricio Fernandez");
+
 
     // ✏️ ESCRIBE AQUÍ MÁS VARIABLES PARA EXPERIMENTAR:
     // let ciudad = $state<string>('...');
@@ -106,6 +111,7 @@
                     <p><strong>Apellido:</strong> {apellido}</p>
                     <p><strong>Edad:</strong> {edad} años</p>
                     <p><strong>¿Es estudiante?:</strong> {esEstudiante}</p>
+                    <p><strong>Sexo</strong>{sexo}</p>
                 </div>
             </div>
 
@@ -126,10 +132,10 @@
                 <h3>🧮 Expresiones Calculadas</h3>
                 <div class="info-card">
                     <p><strong>Nombre completo:</strong> {nombre} {apellido}</p>
-                    <p><strong>Edad el próximo año:</strong> {edad + 1} años</p>
+                    <p><strong>Edad en 2030:</strong> {edad + 5} años</p>
                     <p>
                         <strong>¿Es mayor de edad?:</strong>
-                        {edad >= 18 ? "Sí" : "No"}
+                        {edad >= 25 ? "Sí" : "No"}
                     </p>
                     <p>
                         <strong>Estado:</strong>
@@ -159,6 +165,9 @@
                     <p><strong>Universidad:</strong> {universidad}</p>
                     <p><strong>Semestre:</strong> {semestre}</p>
                     <p><strong>Promedio:</strong> {promedio}</p>
+                    <p><strong>ciudad</strong>{ciudad}</p>
+                    <p><strong>Modalidad:</strong> {modalidad}</p>
+                    <p><strong>Instructor</strong>{Instructor}</p>
 
                     <!-- ✏️ AGREGA MÁS LÍNEAS AQUÍ -->
                     <!-- Ejemplo: <p><strong>Ciudad:</strong> {ciudad}</p> -->
@@ -194,11 +203,22 @@
                               : "Necesita mejorar"}
                     </p>
 
-                    <!-- ✏️ AGREGA TUS PROPIAS EXPRESIONES AQUÍ -->
-                    <!-- Ejemplos de lo que puedes hacer:
-                    <p>🕐 <strong>Años hasta graduarse:</strong> {(6 - semestre) * 0.5} años</p>
-                    <p>🌟 <strong>Mensaje motivacional:</strong> {promedio > 4.0 ? '¡Vas excelente!' : '¡Sigue así!'}</p>
-                    -->
+                    <p>
+                    ⏳ <strong>Semestres restantes:</strong> {10 - semestre}
+                    </p>
+
+                    
+                    <p>
+                    🕐 <strong>Años hasta graduarse:</strong> {(6 - semestre) * 0.5} años
+                    </p>
+
+                    <p>
+                        🌟 <strong>Mensaje motivacional:</strong> {promedio > 4.0 ? '¡Vas excelente!' : '¡Sigue así!'}
+                    </p>
+
+                    <p>
+                    👤 <strong>Iniciales:</strong> {nombre[0]}.{apellido[0]}.
+                    </p>
                 </div>
             </div>
 

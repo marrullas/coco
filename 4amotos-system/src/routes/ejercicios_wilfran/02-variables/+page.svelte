@@ -22,7 +22,7 @@
 
     // ✏️ TAREA 1: Crea tus primeras variables reactivas
     // Ejemplo ya creado para ti:
-    let nombre = $state<string>("Tu Nombre Aquí");
+    let nombre = $state<string>("Wilfran camilo castellanos");
 
     // TODO: Crea las siguientes variables usando $state():
     // - edad: un número con tu edad
@@ -30,9 +30,10 @@
     // - materiaFavorita: un string con tu materia favorita
 
     // ✏️ ESCRIBE AQUÍ TUS VARIABLES:
-    // let edad = $state<number>(...);
-    // let esEstudiante = $state<boolean>(...);
-    // let materiaFavorita = $state<string>(...);
+
+     let edad = $state<number>(25);
+     let esEstudiante = $state<boolean>(true);
+     let materiaFavorita = $state<string>("Analisis de Datos");
 
     // ✅ VARIABLES DE EJEMPLO (no las cambies hasta completar el ejercicio)
     let ejemploTexto = $state<string>("¡Hola Svelte 5!");
@@ -132,26 +133,27 @@
             <div class="resultado">
                 <h3>🎯 Tus Variables:</h3>
 
-                <!-- ✏️ DESCOMENTA ESTAS LÍNEAS CUANDO HAYAS CREADO LAS VARIABLES -->
-
-                <!--
+                
                 <div class="variable-display">
                     <span class="label">nombre:</span>
                     <span class="value string">{nombre}</span>
                 </div>
+
                 <div class="variable-display">
                     <span class="label">edad:</span>
                     <span class="value number">{edad}</span>
                 </div>
+
                 <div class="variable-display">
                     <span class="label">esEstudiante:</span>
                     <span class="value boolean">{esEstudiante}</span>
                 </div>
+
                 <div class="variable-display">
                     <span class="label">materiaFavorita:</span>
                     <span class="value string">{materiaFavorita}</span>
                 </div>
-                -->
+                
 
                 <div class="placeholder">
                     👆 Descomenta las líneas de arriba cuando hayas creado tus

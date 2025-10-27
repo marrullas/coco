@@ -25,6 +25,7 @@
     // 🧭 Navegación dinámica
     import { page } from '$app/state';
     import { obtenerNavegacionEjercicio } from '$lib/utils/navigation.js';
+    import Page from '../+page.svelte';
 
     const navegacion = $derived(obtenerNavegacionEjercicio(page.url.pathname, { id: '01', titulo: 'hola-mundo' }));
 </script>
@@ -84,7 +85,7 @@
                 <h1>Soy wilfran</h1>
             </div>
 
-            <div class="pista">
+            <div class="pista"> 
                 💡 <strong>Pista:</strong> Edita el texto que está entre &lt;h1&gt;
                 y &lt;/h1&gt;
             </div>
@@ -95,10 +96,11 @@
             <p>
                 <strong>Instrucción:</strong> Agrega un párrafo con tu edad y carrera
             </p>
-
+              
             <!-- ✏️ ESCRIBE AQUÍ - Agrega un párrafo <p> debajo del h1 -->
+
             <div class="resultado">
-                <!-- Aquí debes agregar tu párrafo -->
+                <p>Tengo 25 años y estudio ADSO</p>
             </div>
 
             <div class="pista">
@@ -112,9 +114,12 @@
                 <strong>Instrucción:</strong> Crea una lista con 3 cosas que te gustan
             </p>
 
-            <!-- ✏️ ESCRIBE AQUÍ - Agrega una lista <ul> con 3 elementos <li> -->
             <div class="resultado">
-                <!-- Aquí debes agregar tu lista -->
+                <ul>
+                    <li>Ver peliculas</li>
+                    <li>Jugar videojuegos</li>
+                    <li>Escuchar música Cristiana</li>
+                </ul>
             </div>
 
             <div class="pista">
@@ -393,4 +398,5 @@
             text-align: center;
         }
     }
+    
 </style>

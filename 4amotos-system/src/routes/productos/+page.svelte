@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   // --- 1. Definir tipo de producto
-  type Producto = {
+    type Producto = {
     nombre: string;
     descripcion: string;
     precio: number;
@@ -129,6 +129,7 @@
         <option value="Husqvarna">Husqvarna</option>
         <option value="Bajaj">Bajaj</option>
       </select>
+
       <input
         type="text"
         placeholder="Buscar repuesto..."

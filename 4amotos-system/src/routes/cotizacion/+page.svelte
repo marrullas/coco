@@ -4,8 +4,8 @@
   // Función para descargar el resumen de cotización en PDF YUCA
   let logoData = '';
 
-  // Cargar el logo como base64
-  onMount(async () => {
+    // Cargar el logo como base64
+    onMount(async () => {
     const response = await fetch('/img/Logo 4A.jpg');
     const blob = await response.blob();
     const reader = new FileReader();
